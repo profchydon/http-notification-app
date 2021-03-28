@@ -1,0 +1,48 @@
+version: '3'
+
+services: 
+
+  publisher_app:
+    build: 
+      context: .
+      dockerfile: ./publisher/publisher.dockerfile
+    container_name: publisher
+    ports: 
+      - 8000:8000
+    volumes: 
+      - ./publisher:/usr/src/app/publisher
+    depends_on:
+      - redis-server
+    networks: 
+      - notification-network
+
+  subscriber_app:
+    build: 
+      context: .
+      dockerfile: ./subscriber/subscriber.dockerfile
+    container_name: subscriber
+    ports: 
+      - 8080:8080
+    volumes: 
+      - ./subscriber:/usr/src/app/subscriber
+    depends_on:
+      - redis-server
+    networks: 
+      - notification-network
+
+  redis-server:
+    image: redis:6.0.12-alpine
+    container_name: redis
+    restart: unless-stopped
+    tty: true
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redisdata:/usr/local/etc/redis
+    networks: 
+      - notification-network
+
+networks: 
+  notification-network:
+    driver: bridge
