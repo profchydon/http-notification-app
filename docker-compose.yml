@@ -12,7 +12,20 @@ services:
     volumes: 
       - ./publisher:/usr/src/app/publisher
     depends_on:
-      - redis-server
+      - publisher-redis-server
+    networks: 
+      - notification-network
+
+  publisher-redis-server:
+    image: redis:6.0.12-alpine
+    container_name: publisher_redis
+    restart: unless-stopped
+    tty: true
+    ports:
+      - 6379:6379
+    volumes:
+      - ./publisher/redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./publisher/redisdata:/usr/local/etc/redis
     networks: 
       - notification-network
 
@@ -26,20 +39,20 @@ services:
     volumes: 
       - ./subscriber:/usr/src/app/subscriber
     depends_on:
-      - redis-server
+      - subscriber-redis-server
     networks: 
       - notification-network
 
-  redis-server:
+  subscriber-redis-server:
     image: redis:6.0.12-alpine
-    container_name: redis
+    container_name: subscriber_redis
     restart: unless-stopped
     tty: true
     ports:
-      - 6379:6379
+      - 6389:6379
     volumes:
-      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
-      - ./redisdata:/usr/local/etc/redis
+      - ./subscriber/redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./subscriber/redisdata:/usr/local/etc/redis
     networks: 
       - notification-network
 

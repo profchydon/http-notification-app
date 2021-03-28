@@ -15,9 +15,14 @@ class SubscriberController extends Controller
         $this->subscriber = $subscriber;
     }
     
+    /**
+     * Receive message from publisher
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return boolean
+     */
     public function consumeTopic(Request $request)
     {
-
 
         $response = $request->all();
 
@@ -25,7 +30,6 @@ class SubscriberController extends Controller
 
         $url = $response['url'];
 
-        
         $store = $this->subscriber->setToRedis($url, $message);
 
         if ($store) {
