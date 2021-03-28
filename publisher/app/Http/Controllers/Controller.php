@@ -61,4 +61,14 @@ class Controller extends BaseController
 
         }
     }
+
+    public function sendResponse($data, $message, $HttpCode)
+    {
+        $response = [
+            'message' => $message,
+            'data'    => $data,
+        ];
+
+        return response($response, $HttpCode);
+    }
 }

@@ -16,16 +16,7 @@ class SubscriberController extends Controller
     {
         $this->subscriber = $subscriber;
     }
-
-    public function sendResponse($data, $message, $HttpCode)
-    {
-        $response = [
-            'message' => $message,
-            'data'    => $data,
-        ];
-
-        return response($response, $HttpCode);
-    }
+    
     //
     public function createSubscription($topic, Request $request)
     {

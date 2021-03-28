@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Exceptions\PublishMessageException;
 use App\Http\Repository\PublisherRepository;
+use Symfony\Component\HttpFoundation\Response;
 
 class PublisherController extends Controller
 {
@@ -22,7 +24,12 @@ class PublisherController extends Controller
 
         $subscribers = collect($subscribers);
 
-        $subscribers->each(function ($subscriber) use ($message) {
+        $success = false;
+
+        $exception_message = "There was an error publishing this message";
+        $exception = new PublishMessageException($exception_message);
+
+        $subscribers->each(function ($subscriber) use ($message, $success, $exception) {
 
             $data = [
                 'message' => $message,
@@ -31,9 +38,20 @@ class PublisherController extends Controller
 
             $subscriber_host = env('SUBSCRIBER_HOST', 'http://subscriber_app:8080');
 
-            $notify_subscriber = $this->notifySubscriber($data, $subscriber_host);
+            $success = $this->notifySubscriber($data, $subscriber_host) ? true : false;
 
-            dd($notify_subscriber);
+            if (!$success) {
+
+                $exception->setReason($success);
+                throw $exception;
+            }
         });
+
+        $response = [
+            'topic'    => $topic,
+            'message' => $message,
+        ];
+
+        return response($response, Response::HTTP_ACCEPTED);
     }
 }
