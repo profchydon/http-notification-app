@@ -11,6 +11,12 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    /**
+     * Send message to subscribers
+     *
+     * @param  string $message
+     * @param  string $url
+     */
     public static function notifySubscriber($message, $url)
     {
 
@@ -62,6 +68,13 @@ class Controller extends BaseController
         }
     }
 
+    /**
+     * Send response
+     *
+     * @param  array $data
+     * @param  string $message
+     * @param \Symfony\Component\HttpFoundation\Response $HttpCode;
+     */
     public static function sendResponse($data, $message, $HttpCode)
     {
         $response = [
