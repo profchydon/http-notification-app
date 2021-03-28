@@ -43,7 +43,7 @@ class SubscriberController extends Controller
 
         if($validator->fails()){
 
-            return static::sendResponse($validator->errors(), 'Validation Error.' , Response::HTTP_UNPROCESSABLE_ENTITY);
+            return static::sendResponse($validator->errors(), 'Validation Error.' , Response::HTTP_PRECONDITION_FAILED);
 
         }
 
