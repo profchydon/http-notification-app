@@ -30,13 +30,12 @@ class SubscriberController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  string $topic
-     * @return Response
+     * @return \Symfony\Component\HttpFoundation\Response;
      */
     public function createSubscription($topic, Request $request)
     {
 
-        // VALIDATE INPUT DATA
-        $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [ // Validate input data
 
             'url' => 'required',
 
@@ -44,31 +43,28 @@ class SubscriberController extends Controller
 
         if($validator->fails()){
 
-            return $this->sendError('Validation Error.', $validator->errors());
+            return static::sendResponse($validator->errors(), 'Validation Error.' , Response::HTTP_UNPROCESSABLE_ENTITY);
 
         }
 
         $url_array = [];
 
-        // GET ALL SUBSCRIBERS FOR $TOPIC FROM REDIS 
-        $subscribers = $this->subscriber->getFromRedis($topic);
+        $subscribers = $this->subscriber->getFromRedis($topic); // Get all subscribers for $topic from redis
 
-        // CHECK IF SUBSCRIBER $request->url HAS BEEN SUBSCRIBED TO TOPIC $topic
-        if (in_array($request->url, (array) $subscribers)) {
+        if (in_array($request->url, (array) $subscribers)) { // Check if subscriber $request->url  has been subscribed to topic $topic
 
             $url = $request->url;
 
             $message = "${url} server is already subscribed to ${topic} topic";
 
-            return $this->sendResponse("", $message, Response::HTTP_UNPROCESSABLE_ENTITY);
+            return static::sendResponse("", $message, Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
         !$subscribers ? array_push($url_array, $request->url) : array_push($subscribers, $request->url);
 
         $data = $url_array ? $url_array : $subscribers;
 
-        // STORE DATA TO REDIS
-        $this->subscriber->setToRedis($topic, $data);
+        $this->subscriber->setToRedis($topic, $data); // Store data to redis
 
         $response = [
             'url' => $request->url,
@@ -76,6 +72,7 @@ class SubscriberController extends Controller
         ];
 
         return response($response, Response::HTTP_CREATED);
+        
     }
 
 }

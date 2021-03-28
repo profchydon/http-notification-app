@@ -16,16 +16,25 @@ class PublisherController extends Controller
         $this->publisher = $publisher;
     }
 
+    /**
+     * Publish message to topic
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  string $topic
+     * @return \Symfony\Component\HttpFoundation\Response;
+     */
     public function publishMessage($topic, Request $request)
     {
         $message = $request->all();
 
-        $subscribers = $this->publisher->getSubscibers($topic);
+        
+        $subscribers = $this->publisher->getSubscibers($topic); // Get all subscribers for $topic from redis
 
         $subscribers = collect($subscribers);
 
         $success = false;
 
+        // Initialize exception
         $exception_message = "There was an error publishing this message";
         $exception = new PublishMessageException($exception_message);
 
@@ -38,7 +47,7 @@ class PublisherController extends Controller
 
             $subscriber_host = env('SUBSCRIBER_HOST', 'http://subscriber_app:8080');
 
-            $success = $this->notifySubscriber($data, $subscriber_host) ? true : false;
+            $success = static::notifySubscriber($data, $subscriber_host) ? true : false;
 
             if (!$success) {
 

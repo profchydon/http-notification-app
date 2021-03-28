@@ -11,7 +11,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function notifySubscriber($message, $url)
+    public static function notifySubscriber($message, $url)
     {
 
         try {
@@ -62,7 +62,7 @@ class Controller extends BaseController
         }
     }
 
-    public function sendResponse($data, $message, $HttpCode)
+    public static function sendResponse($data, $message, $HttpCode)
     {
         $response = [
             'message' => $message,
