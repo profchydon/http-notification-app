@@ -45,15 +45,17 @@ class PublisherController extends Controller
                 'url' => $subscriber
             ];
 
-            $subscriber_host = env('SUBSCRIBER_HOST', 'http://subscriber_app:8080');
+            $subscriber_host = env('SUBSCRIBER_HOST', 'http://subscriber_app:8080'); // Initialize subscriber container address in the docker network
 
             $success = static::notifySubscriber($data, $subscriber_host) ? true : false;
 
             if (!$success) {
 
-                $exception->setReason($success);
+                $exception->setReason($success); // Set reason for exception
                 throw $exception;
+                
             }
+
         });
 
         $response = [
