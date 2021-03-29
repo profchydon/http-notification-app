@@ -11,7 +11,38 @@ will be forwarded to the subscriber endpoints.
 - Clone repo
 - Change to the application's directory `$ cd http-notification-app`
 - Start the docker containers `$ docker-compose up -d --build`
-- Visit publisher serve URL like [http://localhost:8000](http://localhost:8000).
-- Visit subscriber serve URL like [http://localhost:8080](http://localhost:8080).
+- Visit publisher server URL like [http://localhost:8000](http://localhost:8000).
+- Visit subscriber server URL like [http://localhost:8080](http://localhost:8080).
 
 
+## How to test
+
+- Complete all steps in the [SETUP](https://github.com/profchydon/http-notification-app#setup) section.
+- ***CREATE A SUBSCRIPTION:***  Make a HTTP POST request to `http:localhost:8080/api/subscribe/country` as below:
+
+    ```
+        POST /api/subscribe/country
+        // body
+        {
+         url: "http://localhost:8080/list-of-countries"
+        }
+    ```
+     
+- ***PUBLISH MESSAGE TO TOPIC:***  Make a HTTP POST request to `http:localhost:8080/api/publish/country` as below:
+
+    ```
+        POST /api/publish/country
+        // body
+        [
+            {
+                "name":"Nigeria",
+                "continent": "Africa"
+            },
+            {
+                "name":"Spain",
+                "continent": "Europe"
+            }
+        ]
+    ```
+    
+- ***VERIFY MESSAGE:***  Visit [http://localhost:8080/list-of-countries](http://localhost:8080/list-of-countries)
