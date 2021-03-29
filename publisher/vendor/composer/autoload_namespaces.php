@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
+    'M6Web\\Component\\RedisMock' => array($vendorDir . '/m6web/redis-mock/src'),
 );

@@ -12,7 +12,19 @@ class SubscriberTest extends TestCase
      *
      * @return void
      */
-    public function testItSuccessfullySubscribesATopic()
+    public function testItHasASubscriberUrlInTheBody()
+    {
+        $response = $this->post('/api/subscribe/main', []);
+        $response
+            ->assertStatus(412);
+    }
+
+    /**
+     * @test.
+     *
+     * @return void
+     */
+    public function testItSuccessfullyCreatesASubscription()
     {
         $response = $this->post('/api/subscribe/main', [
             'url' => 'http://localhost:8080'
@@ -26,32 +38,4 @@ class SubscriberTest extends TestCase
             ]);
     }
 
-    /**
-     * @test.
-     *
-     * @return void
-     */
-    public function testItSuccessfullyPublishesAMessage()
-    {
-        $response = $this->post('/api/publish/main', [
-            [
-                [
-                    "name" => "John Doe",
-                    "country" =>  "England"
-                ]
-            ]
-        ]);
-
-        $response
-            ->assertStatus(202)
-            ->assertJson([
-                'topic' => 'main',
-                'message' => [
-                    [
-                        "name" => "John Doe",
-                        "country" =>  "England"
-                    ]
-                ]
-            ]);
-    }
 }

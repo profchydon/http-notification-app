@@ -123,6 +123,7 @@ class ComposerStaticInitd48d6d3d7150d9b51045ceb8a44aef40
         ),
         'L' => 
         array (
+            'Lunaweb\\RedisMock\\' => 18,
             'League\\MimeTypeDetection\\' => 25,
             'League\\Flysystem\\' => 17,
             'League\\CommonMark\\' => 18,
@@ -379,6 +380,10 @@ class ComposerStaticInitd48d6d3d7150d9b51045ceb8a44aef40
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
+        'Lunaweb\\RedisMock\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/josiasmontag/laravel-redis-mock/src',
+        ),
         'League\\MimeTypeDetection\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/mime-type-detection/src',
@@ -509,12 +514,17 @@ class ComposerStaticInitd48d6d3d7150d9b51045ceb8a44aef40
             array (
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
             ),
+            'M6Web\\Component\\RedisMock' => 
+            array (
+                0 => __DIR__ . '/..' . '/m6web/redis-mock/src',
+            ),
         ),
     );
 
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Exceptions\\PublishMessageException' => __DIR__ . '/../..' . '/app/Exceptions/PublishMessageException.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\PublisherController' => __DIR__ . '/../..' . '/app/Http/Controllers/PublisherController.php',
         'App\\Http\\Controllers\\SubscriberController' => __DIR__ . '/../..' . '/app/Http/Controllers/SubscriberController.php',
@@ -527,6 +537,7 @@ class ComposerStaticInitd48d6d3d7150d9b51045ceb8a44aef40
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Repository\\PublisherRepository' => __DIR__ . '/../..' . '/app/Http/Repository/PublisherRepository.php',
         'App\\Http\\Repository\\SubscriberRepository' => __DIR__ . '/../..' . '/app/Http/Repository/SubscriberRepository.php',
         'App\\Models\\Subscriber' => __DIR__ . '/../..' . '/app/Models/Subscriber.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
@@ -2805,6 +2816,12 @@ class ComposerStaticInitd48d6d3d7150d9b51045ceb8a44aef40
         'League\\MimeTypeDetection\\FinfoMimeTypeDetector' => __DIR__ . '/..' . '/league/mime-type-detection/src/FinfoMimeTypeDetector.php',
         'League\\MimeTypeDetection\\GeneratedExtensionToMimeTypeMap' => __DIR__ . '/..' . '/league/mime-type-detection/src/GeneratedExtensionToMimeTypeMap.php',
         'League\\MimeTypeDetection\\MimeTypeDetector' => __DIR__ . '/..' . '/league/mime-type-detection/src/MimeTypeDetector.php',
+        'Lunaweb\\RedisMock\\MockPredisConnection' => __DIR__ . '/..' . '/josiasmontag/laravel-redis-mock/src/MockPredisConnection.php',
+        'Lunaweb\\RedisMock\\MockPredisConnector' => __DIR__ . '/..' . '/josiasmontag/laravel-redis-mock/src/MockPredisConnector.php',
+        'Lunaweb\\RedisMock\\Providers\\RedisMockServiceProvider' => __DIR__ . '/..' . '/josiasmontag/laravel-redis-mock/src/Providers/RedisMockServiceProvider.php',
+        'M6Web\\Component\\RedisMock\\RedisMock' => __DIR__ . '/..' . '/m6web/redis-mock/src/M6Web/Component/RedisMock/RedisMock.php',
+        'M6Web\\Component\\RedisMock\\RedisMockFactory' => __DIR__ . '/..' . '/m6web/redis-mock/src/M6Web/Component/RedisMock/RedisMockFactory.php',
+        'M6Web\\Component\\RedisMock\\UnsupportedException' => __DIR__ . '/..' . '/m6web/redis-mock/src/M6Web/Component/RedisMock/UnsupportedException.php',
         'Mockery' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditions' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditions.php',
@@ -5317,6 +5334,7 @@ class ComposerStaticInitd48d6d3d7150d9b51045ceb8a44aef40
         'Tests\\Feature\\ExampleTest' => __DIR__ . '/../..' . '/tests/Feature/ExampleTest.php',
         'Tests\\TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Tests\\Unit\\ExampleTest' => __DIR__ . '/../..' . '/tests/Unit/ExampleTest.php',
+        'Tests\\Unit\\SubscriberTest' => __DIR__ . '/../..' . '/tests/Unit/SubscriberTest.php',
         'TheSeer\\Tokenizer\\Exception' => __DIR__ . '/..' . '/theseer/tokenizer/src/Exception.php',
         'TheSeer\\Tokenizer\\NamespaceUri' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUri.php',
         'TheSeer\\Tokenizer\\NamespaceUriException' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUriException.php',

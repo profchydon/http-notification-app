@@ -1386,6 +1386,70 @@
             "install-path": "../hamcrest/hamcrest-php"
         },
         {
+            "name": "josiasmontag/laravel-redis-mock",
+            "version": "1.2.6",
+            "version_normalized": "1.2.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/josiasmontag/laravel-redis-mock.git",
+                "reference": "378aa6bdb04775d38b5a83d63eb2e2de0e81cb7e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/josiasmontag/laravel-redis-mock/zipball/378aa6bdb04775d38b5a83d63eb2e2de0e81cb7e",
+                "reference": "378aa6bdb04775d38b5a83d63eb2e2de0e81cb7e",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^5.8.30|^6.0|^7.0|^8.0",
+                "m6web/redis-mock": "^4.2",
+                "php": ">=7.1.0",
+                "predis/predis": "^1.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.8.0|^4.0|^5.0|^6.0",
+                "phpunit/phpunit": "^7.0|^8.0"
+            },
+            "time": "2020-09-09T12:21:41+00:00",
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Lunaweb\\RedisMock\\Providers\\RedisMockServiceProvider"
+                    ]
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Lunaweb\\RedisMock\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Josias Montag",
+                    "email": "josias@montag.info"
+                }
+            ],
+            "description": "This Laravel package provides a Redis mock for your tests",
+            "homepage": "https://github.com/josiasmontag/laravel-redis-mock",
+            "keywords": [
+                "language",
+                "laravel",
+                "localization",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/josiasmontag/laravel-redis-mock/issues",
+                "source": "https://github.com/josiasmontag/laravel-redis-mock/tree/1.2.6"
+            },
+            "install-path": "../josiasmontag/laravel-redis-mock"
+        },
+        {
             "name": "laravel/framework",
             "version": "v8.34.0",
             "version_normalized": "8.34.0.0",
@@ -1950,6 +2014,58 @@
                 }
             ],
             "install-path": "../league/mime-type-detection"
+        },
+        {
+            "name": "m6web/redis-mock",
+            "version": "v4.7.0",
+            "version_normalized": "4.7.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/M6Web/RedisMock.git",
+                "reference": "057ad8e1bea903aee54642e310d900bdb794372c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/M6Web/RedisMock/zipball/057ad8e1bea903aee54642e310d900bdb794372c",
+                "reference": "057ad8e1bea903aee54642e310d900bdb794372c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "atoum/atoum": "master-dev",
+                "predis/predis": "~1.1"
+            },
+            "time": "2019-11-04T09:03:23+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "M6Web\\Component\\RedisMock": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "M6Web",
+                    "email": "opensource@m6web.fr",
+                    "homepage": "http://tech.m6web.fr/"
+                }
+            ],
+            "description": "Library providing a PHP mock for Redis",
+            "keywords": [
+                "mock",
+                "redis"
+            ],
+            "support": {
+                "issues": "https://github.com/M6Web/RedisMock/issues",
+                "source": "https://github.com/M6Web/RedisMock/tree/v4.7.0"
+            },
+            "install-path": "../m6web/redis-mock"
         },
         {
             "name": "mockery/mockery",

@@ -1,12 +1,12 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => '282e298696f058b386f10985d757e78ca708ad57',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -422,6 +422,15 @@
         0 => 'v8.34.0',
       ),
     ),
+    'josiasmontag/laravel-redis-mock' => 
+    array (
+      'pretty_version' => '1.2.6',
+      'version' => '1.2.6.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '378aa6bdb04775d38b5a83d63eb2e2de0e81cb7e',
+    ),
     'kodova/hamcrest-php' => 
     array (
       'replaced' => 
@@ -440,12 +449,12 @@
     ),
     'laravel/laravel' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '282e298696f058b386f10985d757e78ca708ad57',
     ),
     'laravel/sail' => 
     array (
@@ -491,6 +500,15 @@
       array (
       ),
       'reference' => '3b9dff8aaf7323590c1d2e443db701eb1f9aa0d3',
+    ),
+    'm6web/redis-mock' => 
+    array (
+      'pretty_version' => 'v4.7.0',
+      'version' => '4.7.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '057ad8e1bea903aee54642e310d900bdb794372c',
     ),
     'mockery/mockery' => 
     array (
