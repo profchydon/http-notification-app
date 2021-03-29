@@ -26,7 +26,8 @@ WORKDIR /usr/src/app/publisher
 COPY ./publisher /usr/src/app/publisher
 
 RUN cd /usr/src/app/publisher && \
-    composer install
+    composer install && \
+    php artisan test
 
 CMD php artisan serve --host=0.0.0.0 --port=8000
 
